@@ -2,10 +2,10 @@
 
 ##What is Siri Bhoovalaya?:
 
-* Siri Bhoovalaya is an ancient Encryption technique
-* Refer following url's:
-  1. http://en.wikipedia.org/wiki/Siribhoovalaya for more details
-  2. http://siri-bhoovalaya.org/introduction-to-siribhoovalaya/
+1. Siri Bhoovalaya is an ancient Encryption technique
+2. Refer following url's:
+  1. [Wikipedia] (http://en.wikipedia.org/wiki/Siribhoovalaya/) for more details
+  2. [Siri Bhoovalaya `(dot)` org] (http://siri-bhoovalaya.org/introduction-to-siribhoovalaya/)
 
 ##What is this?
 1. It is an attempt to demonstrate how this technique work.
