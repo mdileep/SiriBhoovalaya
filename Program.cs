@@ -11,7 +11,7 @@ namespace Siri
 			DateTime st = DateTime.Now;
 			try
 			{
-				new TestSiri().Run();
+				new Tester().Run();
 			
 			}
 			catch (Exception ex)

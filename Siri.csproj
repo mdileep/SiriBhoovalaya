@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Siri</RootNamespace>
     <AssemblyName>Siri</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -41,15 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MathHelper.cs" />
-    <Compile Include="PrintHelper.cs" />
+    <Compile Include="Contracts\iCoding.cs" />
+    <Compile Include="Contracts\iOutput.cs" />
+    <Compile Include="Contracts\iPublisher.cs" />
+    <Compile Include="Contracts\iInput.cs" />
+    <Compile Include="Extends\DebugPublisher.cs" />
+    <Compile Include="Extends\GenericInput.cs" />
+    <Compile Include="Extends\GenericOutput.cs" />
+    <Compile Include="Extends\UnicodeCoding.cs" />
+    <Compile Include="Helpers\MathHelper.cs" />
+    <Compile Include="Printer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SiriUtil.cs" />
-    <Compile Include="TestSiri.cs" />
+    <Compile Include="Bhoovalaya.cs" />
+    <Compile Include="Tester.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Readme" />
+    <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Research.ico" />

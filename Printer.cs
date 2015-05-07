@@ -5,10 +5,18 @@ using System.Text;
 
 namespace Siri
 {
-	public class PrintHelper
+	public class Printer :IDisposable
 	{
 		const string TAB = "\t";
-		public static void Print(char[] TextMatrix)
+		private iPublisher Publisher;
+
+		public Printer(iPublisher Publisher)
+		{
+			this.Publisher = Publisher;
+			Publisher.Open();
+		}
+
+		public void Print(char[] TextMatrix)
 		{
 			if (!MathHelper.IsPerfectSqure(TextMatrix.Length))
 			{
@@ -21,7 +29,7 @@ namespace Siri
 
 		}
 
-		public static void Print(char[] CharMatrix, int rows, int cols)
+		public void Print(char[] CharMatrix, int rows, int cols)
 		{
 			int index = 0;
 			for (int r = 0; r < rows; r++)
@@ -36,7 +44,7 @@ namespace Siri
 			}
 		}
 
-		public static void Print(int[] Matrix)
+		public void Print(int[] Matrix)
 		{
 			if (!MathHelper.IsPerfectSqure(Matrix.Length))
 			{
@@ -47,7 +55,7 @@ namespace Siri
 			Print(Matrix, rows, rows);
 		}
 
-		public static void Print(int[] Matrix, int rows, int cols)
+		public void Print(int[] Matrix, int rows, int cols)
 		{
 
 			int index = 0;
@@ -63,9 +71,14 @@ namespace Siri
 			}
 		}
 
-		internal static void PrintLine(string line)
+		public void PrintLine(string line)
 		{
-			Debug.WriteLine(line);
+			Publisher.WriteLine(line);
+		}
+
+		public void Dispose()
+		{
+			Publisher.Close();
 		}
 	}
 }

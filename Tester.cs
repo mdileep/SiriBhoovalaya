@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Siri
 {
-	public class TestSiri
+	public class Tester
 	{
 		public void Run()
 		{
@@ -87,13 +87,13 @@ namespace Siri
 												0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 											};
 
+			iCoding UC= new UnicodeCoding();
+			iPublisher P= new DebugPublisher();
 
-			SiriHelper.BuildValaya(input, pattern1_3x3);
-			SiriHelper.BuildValaya(input, pattern2_3x3);
-			SiriHelper.BuildValaya(input, pattern1_27x27);
-			SiriHelper.BuildValaya(input, pattern2_27x27);
-
-
+			Bhoovalaya.Encode(new GenericInput { Input = input, KeyPattern =pattern1_3x3}, UC, P);
+			Bhoovalaya.Encode(new GenericInput { Input = input, KeyPattern = pattern2_3x3 }, UC, P);
+			Bhoovalaya.Encode(new GenericInput { Input = input, KeyPattern = pattern1_27x27 }, UC, P);
+			Bhoovalaya.Encode(new GenericInput { Input = input, KeyPattern = pattern1_27x27 }, UC, P);
 		}
 	}
 }

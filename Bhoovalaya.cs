@@ -3,54 +3,23 @@ using System.Text;
 
 namespace Siri
 {
-
-	
-	public class SiriHelper
+	public class Bhoovalaya
 	{
-		public static int[] BuildValaya(string input, int[] KeyPattern)
+		public static iOutput Encode(iInput Input,iCoding Coding, iPublisher Publisher)
 		{
+			Validate(Input);
 
-			Validate(input, KeyPattern);
-
-
-			PrintHelper.PrintLine(input);
-
-			int[] output = new int[KeyPattern.Length];
-
-			PrintHelper.PrintLine("Key Pattern: ");
-			PrintHelper.Print(KeyPattern);
-
-			char[] TextMatrix = BuildTextMatrix(input, KeyPattern);
-
-			PrintHelper.PrintLine("Text matrix: ");
-			PrintHelper.Print(TextMatrix);
-
-			int[] Valaya = BuildValaya(TextMatrix);
-
-
-			PrintHelper.PrintLine("Valaya: ");
-			PrintHelper.Print(Valaya);
-
+			iOutput Valaya = Coding.BuildValaya(Input);
+			Publisher.Publish(Input, Valaya);
+			
 			return Valaya;
-
-
 		}
 
-		private static int[] BuildValaya(char[] TextMatrix)
+		public static char[] BuildTextMatrix(iInput Input)
 		{
-			int[] output = new int[TextMatrix.Length];
-			int index = 0;
-			foreach (char c in TextMatrix)
-			{
-				output[index++] = (int)c;
-			}
-			return output;
-		}
+			string input = Input.Input;
+			int[] KeyPattern = Input.KeyPattern;
 
-
-
-		private static char[] BuildTextMatrix(string input, int[] KeyPattern)
-		{
 			StringBuilder sb = new StringBuilder(KeyPattern.Length);
 			foreach (int pos in KeyPattern)
 			{
@@ -65,9 +34,11 @@ namespace Siri
 			}
 			return sb.ToString().ToCharArray();
 		}
-
-		private static void Validate(string input, int[] KeyPattern)
+		private static void Validate(iInput Input)
 		{
+			string input = Input.Input;
+			int[] KeyPattern = Input.KeyPattern;
+
 			if (KeyPattern == null)
 			{
 				throw new Exception("Key Pattern can't be null");
@@ -120,10 +91,5 @@ namespace Siri
 				Test[val - 1] = 1;
 			}
 		}
-
-
-
 	}
-	
-	
 }
