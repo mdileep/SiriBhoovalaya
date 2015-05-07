@@ -60,6 +60,7 @@
     <None Include="App.config" />
     <None Include="Readme" />
     <None Include="Readme.md" />
+    <None Include="SiriBhoovalaya.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Research.ico" />
