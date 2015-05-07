@@ -36,11 +36,11 @@ namespace Siri
 			{
 				for (int c = 0; c < cols; c++)
 				{
-					Debug.Write(CharMatrix[index]);
-					Debug.Write(TAB);
+					Publisher.Write(CharMatrix[index]);
+					Publisher.Write(TAB);
 					index++;
 				}
-				Debug.WriteLine(Environment.NewLine);
+				Publisher.WriteLine(Environment.NewLine);
 			}
 		}
 
@@ -63,11 +63,11 @@ namespace Siri
 			{
 				for (int c = 0; c < cols; c++)
 				{
-					Debug.Write(Matrix[index]);
-					Debug.Write(TAB);
+					Publisher.Write(Matrix[index]);
+					Publisher.Write(TAB);
 					index++;
 				}
-				Debug.WriteLine(Environment.NewLine);
+				Publisher.WriteLine(Environment.NewLine);
 			}
 		}
 

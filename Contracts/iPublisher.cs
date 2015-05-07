@@ -7,8 +7,13 @@ namespace Siri
 	public interface iPublisher
 	{
 		void Publish(iInput input, iOutput output);
-		void WriteLine(string line);
+
 		void Open();
 		void Close();
+
+		void WriteLine(string line);
+		void Write(string TAB);
+		void Write(char c);
+		void Write(int p);
 	}
 }

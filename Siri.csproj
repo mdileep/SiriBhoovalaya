@@ -45,12 +45,15 @@
     <Compile Include="Contracts\iOutput.cs" />
     <Compile Include="Contracts\iPublisher.cs" />
     <Compile Include="Contracts\iInput.cs" />
+    <Compile Include="Extends\FilePublisher.cs" />
     <Compile Include="Extends\DebugPublisher.cs" />
     <Compile Include="Extends\GenericInput.cs" />
     <Compile Include="Extends\GenericOutput.cs" />
+    <Compile Include="Extends\PublisherBase.cs" />
     <Compile Include="Extends\UnicodeCoding.cs" />
     <Compile Include="Helpers\MathHelper.cs" />
     <Compile Include="Helpers\Printer.cs" />
+    <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Bhoovalaya.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Siri
@@ -8,7 +9,69 @@ namespace Siri
 	{
 		public void Run()
 		{
+			RunFixedPatterns();
+			RunSingleInputFile();
+		}
+
+		private void RunSingleInputFile()
+		{
 			string input = "Dileep";
+			string file = "pattern.txt";
+			string output="output_1.txt";
+
+			if (!File.Exists(file))
+			{
+				//throw new Exception(file +"  doesn't exists.");
+				return ;
+			}
+
+			int[] pattern = ReadPattern(file);
+			
+			
+			iCoding UC = new UnicodeCoding();
+			iPublisher P = new FilePublisher(output);
+			
+			iInput GI = new GenericInput { Input = input, KeyPattern = pattern };
+
+			Bhoovalaya.Encode(GI, UC, P);
+		}
+
+		private int[] ReadPattern(string file)
+		{
+			List<int> List = new List<int>();
+			string[] Lines = File.ReadAllLines(file,Encoding.UTF8);
+			foreach (string line in Lines)
+			{
+				foreach (string s in line.Split(','))
+				{
+					string c=s.Trim();
+					if (c == "")
+					{
+						continue;
+					}
+
+					int x = int.Parse(c);
+
+					List.Add(x);
+				}
+			}
+			return List.ToArray();
+		}
+
+		private void RunFixedPatterns()
+		{
+			string input = "Dileep";
+			int[][] patterns = FixedPatterns();
+			iCoding UC = new UnicodeCoding();
+			iPublisher P = new DebugPublisher();
+			foreach (int[] pattern in patterns)
+			{
+				Bhoovalaya.Encode(new GenericInput { Input = input, KeyPattern = pattern }, UC, P);
+			}
+		}
+
+		private int[][] FixedPatterns()
+		{
 			int[] pattern1_3x3 = new int[] {
 											1,2,3,
 											4,5,6,
@@ -86,14 +149,7 @@ namespace Siri
 												0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 												0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 											};
-
-			iCoding UC= new UnicodeCoding();
-			iPublisher P= new DebugPublisher();
-
-			Bhoovalaya.Encode(new GenericInput { Input = input, KeyPattern =pattern1_3x3}, UC, P);
-			Bhoovalaya.Encode(new GenericInput { Input = input, KeyPattern = pattern2_3x3 }, UC, P);
-			Bhoovalaya.Encode(new GenericInput { Input = input, KeyPattern = pattern1_27x27 }, UC, P);
-			Bhoovalaya.Encode(new GenericInput { Input = input, KeyPattern = pattern1_27x27 }, UC, P);
+			return new int[][] { pattern1_3x3, pattern2_3x3, pattern1_27x27, pattern2_27x27 };
 		}
 	}
 }

@@ -5,40 +5,37 @@ using System.Text;
 
 namespace Siri
 {
-	class DebugPublisher : iPublisher
+	public class DebugPublisher : PublisherBase
 	{
 
-		public void Publish(iInput Input, iOutput Output)
+		public override void Write(string message)
 		{
-			string input = Input.Input;
-			int[] KeyPattern = Input.KeyPattern;
-			using (Printer P = new Printer(this))
-			{
-				P.PrintLine(input);
-				P.PrintLine("Key Pattern: ");
-				P.Print(KeyPattern);
-				P.PrintLine("Text matrix: ");
-				P.Print(Output.TextMatrix);
-				P.PrintLine("Valaya: ");
-				P.Print(Output.Valaya);
-			}
-			
+			Debug.Write(message);
 		}
 
-		public void WriteLine(string line)
+		public override void Write(char c)
+		{
+			Debug.Write(c);
+		}
+
+		public override void Write(int i)
+		{
+			Debug.Write(i);
+		}
+
+		public override void WriteLine(string line)
 		{
 			Debug.WriteLine(line);
 		}
 
-		public void Open()
+		public override void Open()
 		{
 			WriteLine("START");
 		}
 
-		public void Close()
+		public override void Close()
 		{
 			WriteLine("END");
 		}
-
 	}
 }
